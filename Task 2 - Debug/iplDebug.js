@@ -25,25 +25,20 @@ const formulatePayment = (choice, amount) => {
     while (weekly > 156) {
       weeklyAmountPayment = weeklyAmountPayment + 50;
       let weeks = remainingTotal / weeklyAmountPayment;
-      if (weeks % 50 !== 0) {
-        weekly = Math.ceil(weeks);
-      }
+
+      weekly = Math.ceil(weeks);
     }
     console.log(`You will be paid ${weeklyAmountPayment} for
     ${weekly} weeks.`);
     return { time: weekly, amount: weeklyAmountPayment };
   } else if (choice == "monthly") {
     let monthlyPrice = 0;
-
-    3;
-
     let monthly = remainingTotal / monthlyPrice;
     while (monthly > 36) {
       monthlyPrice = monthlyPrice + 100;
       let months = remainingTotal / monthlyPrice;
-      if (months % 100 !== 0) {
-        monthly = Math.ceil(months);
-      }
+
+      monthly = Math.ceil(months);
     }
     console.log(`You will be paid ${monthlyPrice} for $
     {monthly} months.`);
