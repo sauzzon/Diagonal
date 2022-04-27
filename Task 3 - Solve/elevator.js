@@ -4,30 +4,19 @@ const calculateTime = (n, m, speeds) => {
   const c = speeds[2];
   const d = speeds[3];
 
-  if (n === 0) {
-    return {
-      time: 0,
-      msg: "John is already at 0 floor",
-    };
-  }
+  if (n === 0) return 0;
 
-  const pureWalkTime = { time: n * d, msg: "John go downstairs by walking" };
-  const elevFromNTime = {
-    time: Math.abs(n - m) * a + b + c + n * a + b,
-    msg: "John go downstairs by using the elevator",
-  };
-  const elevFromMTime = {
-    time: Math.abs(n - m) * d + b + c + m * a + b,
-    msg: `John walks ${n - m} floor and takes the elevator from there`,
-  };
+  const pureWalk = n * d;
+  const elevFromN = Math.abs(n - m) * a + b + c + n * a + b;
+  const elevFromM = Math.abs(n - m) * d + b + c + m * a + b;
 
-  const shortestTime = Math.min(
-    pureWalkTime.time,
-    elevFromMTime.time,
-    elevFromNTime.time
-  );
+  const shortestTime = Math.min(pureWalk, elevFromN, elevFromM);
   return shortestTime;
 };
 
-const solution = calculateTime(7, 6, [3, 1, 1, 4]);
-console.log(solution);
+//checking examples given in question
+
+console.log(calculateTime(4, 5, [1, 2, 3, 10])); //output 12
+console.log(calculateTime(0, 5, [1, 2, 3, 10])); // output 0
+console.log(calculateTime(4, 3, [2, 3, 4, 5])); //output 20
+console.log(calculateTime(7, 6, [3, 1, 1, 4])); //output 25
