@@ -1,0 +1,8 @@
+.section1 {
+    background-size: cover;
+    width: 100%;
+    height: 80vh;
+    background-image: url("../utils/images/homepage.jpg");
+    text-align: center;
+    color: white;
+  }
