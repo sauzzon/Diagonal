@@ -9,7 +9,7 @@ import Typography from "@mui/material/Typography";
 import { Grid, Paper } from "@mui/material";
 import { Link } from "react-router-dom";
 
-const ConnectUser = () => {
+const Login = () => {
   //some styling
   const paperStyle = {
     padding: 50,
@@ -101,4 +101,4 @@ const ConnectUser = () => {
   );
 };
 
-export default ConnectUser;
+export default Login;
