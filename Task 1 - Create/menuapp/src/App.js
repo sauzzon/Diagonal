@@ -7,6 +7,7 @@ import Menu from "./pages/menu";
 import Orders from "./pages/orders";
 import NotFound from "./pages/notfound";
 import AppBar from "./components/appbar";
+import Footer from "./components/footer";
 
 const App = () => {
   return (
@@ -21,6 +22,7 @@ const App = () => {
         <Route path="/orders" element={<Orders />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
+      <Footer></Footer>
     </BrowserRouter>
   );
 };
