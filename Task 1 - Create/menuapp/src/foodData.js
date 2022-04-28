@@ -1,46 +1,55 @@
+import burgerImage from "./utils/images/food/burger.jpg";
+import cakeImage from "./utils/images/food/cake.jpg";
+import chowmienImage from "./utils/images/food/chowmien.jpg";
+import fryriceImage from "./utils/images/food/fryrice.jpg";
+import icecreamImage from "./utils/images/food/icecream.jpg";
+import friesImage from "./utils/images/food/fries.jpg";
+import momoImage from "./utils/images/food/momo.jpg";
+import pizzaImage from "./utils/images/food/pizza.jpg";
+import sandwichImage from "./utils/images/food/sandwich.jpg";
 const data = [
   {
-    image: "./utils/images/food/burger.jpg",
+    image: burgerImage,
     name: "Burger",
     price: 200,
   },
   {
-    image: "./utils/images/food/cake.jpg",
+    image: cakeImage,
     name: "Cake",
     price: 100,
   },
   {
-    image: "./utils/images/food/chowmien.jpg",
+    image: chowmienImage,
     name: "Chowmien",
     price: 150,
   },
   {
-    image: "./utils/images/food/fryrice.jpg",
+    image: fryriceImage,
     name: "Fried Rice",
     price: 180,
   },
   {
-    image: "./utils/images/food/icecream.jpg",
+    image: icecreamImage,
     name: "Ice Cream",
     price: 90,
   },
   {
-    image: "./utils/images/food/juice.jpg",
-    name: "Fresh Juice",
+    image: friesImage,
+    name: "French Fries",
     price: 200,
   },
   {
-    image: "./utils/images/food/momo.jpg",
+    image: momoImage,
     name: "Momo",
     price: 220,
   },
   {
-    image: "./utils/images/food/pizza.jpg",
+    image: pizzaImage,
     name: "Pizza",
     price: 350,
   },
   {
-    image: "./utils/images/food/sandwich.jpg",
+    image: sandwichImage,
     name: "Sandwich",
     price: 120,
   },
