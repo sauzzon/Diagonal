@@ -4,7 +4,7 @@ import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
 import LockOpenIcon from "@mui/icons-material/LockOpen";
-import HowToRegIcon from "@mui/icons-material/HowToReg";
+import AppRegistrationIcon from "@mui/icons-material/AppRegistration";
 import Typography from "@mui/material/Typography";
 import { Grid, Paper } from "@mui/material";
 import { Link } from "react-router-dom";
@@ -81,7 +81,7 @@ const Login = () => {
             }}
           >
             <Avatar sx={{ m: 1, bgcolor: "#2e7d32" }}>
-              <HowToRegIcon />
+              <AppRegistrationIcon />
             </Avatar>
             <Typography variant="h5">Not Registerd Yet?</Typography>
             <Button
