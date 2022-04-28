@@ -3,9 +3,9 @@ require("express-async-errors");
 
 const express = require("express");
 const app = express();
-const cors = require('cors')
+const cors = require("cors");
 
-app.use(cors())
+app.use(cors());
 
 const connectDatabase = require("./database/connect");
 const authenticateUser = require("./middlewares/authentication");
@@ -13,6 +13,7 @@ const authenticateUser = require("./middlewares/authentication");
 // routers
 const authRouter = require("./routes/authentication");
 const userRouter = require("./routes/users");
+const ordersRouter = require("./routes/orders");
 
 // error handler
 const notFoundMiddleware = require("./middlewares/not-found");
@@ -24,6 +25,7 @@ app.use(express.urlencoded({ limit: "50mb", extended: true }));
 // routes
 app.use("/api/auth", authRouter);
 app.use("/api/users", authenticateUser, userRouter);
+app.use("/api/orders", authenticateUser, ordersRouter);
 
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
