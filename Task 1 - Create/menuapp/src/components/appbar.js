@@ -19,6 +19,26 @@ export default function ButtonAppBar() {
           </Typography>
           <Button
             component={Link}
+            to="/orders"
+            sx={{ m: 1 }}
+            color="inherit"
+            variant="outlined"
+            size="small"
+          >
+            Orders
+          </Button>
+          <Button
+            component={Link}
+            to="/menu"
+            sx={{ m: 1 }}
+            color="inherit"
+            variant="outlined"
+            size="small"
+          >
+            Menu
+          </Button>
+          <Button
+            component={Link}
             to="/"
             sx={{ m: 1 }}
             color="inherit"
