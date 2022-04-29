@@ -5,10 +5,12 @@ import Register from "./pages/register";
 import Menu from "./pages/menu";
 import Orders from "./pages/orders";
 import NotFound from "./pages/notfound";
+import AppBar from "./components/appbar";
 
 const App = () => {
   return (
     <BrowserRouter>
+      <AppBar />
       <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="/login" element={<Login />} />

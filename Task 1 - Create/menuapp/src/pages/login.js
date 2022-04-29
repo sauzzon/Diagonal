@@ -13,8 +13,6 @@ import { useEffect, useContext, useState } from "react";
 import { Context } from "../context/Context";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import AppBar from "../components/appbar";
-import Footer from "../components/footer";
 import Notification from "../components/notification";
 
 const Login = () => {
@@ -76,7 +74,6 @@ const Login = () => {
         />
       ) : (
         <>
-          <AppBar />
           <Grid rowSpacing={0} columnSpacing={1} container component="main">
             <CssBaseline />
             <Grid item xs={12} sm={7} md={6} lg={6}>
@@ -155,7 +152,6 @@ const Login = () => {
               </Paper>
             </Grid>
           </Grid>
-          <Footer />
         </>
       )}
     </>

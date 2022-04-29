@@ -8,8 +8,6 @@ import HowToRegIcon from "@mui/icons-material/HowToReg";
 import Typography from "@mui/material/Typography";
 import { Grid, Paper, CircularProgress } from "@mui/material";
 import { Link } from "react-router-dom";
-import AppBar from "../components/appbar";
-import Footer from "../components/footer";
 
 import { useEffect, useContext, useState } from "react";
 import { Context } from "../context/Context";
@@ -116,7 +114,6 @@ const Register = () => {
         />
       ) : (
         <>
-          <AppBar />
           <Grid rowSpacing={0} columnSpacing={1} container component="main">
             <CssBaseline />
             <Grid item xs={12} sm={7} md={6} lg={6}>
@@ -220,7 +217,6 @@ const Register = () => {
               </Paper>
             </Grid>
           </Grid>
-          <Footer />
         </>
       )}
     </>
