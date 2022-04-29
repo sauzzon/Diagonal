@@ -36,7 +36,7 @@ const MenuCard = ({ data }) => {
                 variant="contained"
                 size="small"
               >
-                Order Now
+                Add to Cart
               </Button>
             </CardActions>
           </Card>
