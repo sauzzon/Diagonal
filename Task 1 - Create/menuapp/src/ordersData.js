@@ -1,5 +1,6 @@
 const data = [
   {
+    id: 0,
     price: 5000,
     status: "pending",
     createdAt: "2022-04-22",
@@ -17,6 +18,7 @@ const data = [
     ],
   },
   {
+    id: 1,
     price: 4000,
     status: "payed",
     createdAt: "2022-02-20",
@@ -29,6 +31,7 @@ const data = [
     ],
   },
   {
+    id: 2,
     price: 15000,
     status: "payed",
     createdAt: "2022-01-02",
@@ -76,6 +79,7 @@ const data = [
     ],
   },
   {
+    id: 3,
     price: 1000,
     status: "pending",
     createdAt: "2022-04-22",

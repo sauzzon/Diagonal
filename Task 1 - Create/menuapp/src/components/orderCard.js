@@ -11,7 +11,7 @@ import {
 import photo from "../utils/images/order.jpg";
 
 const OrderCard = ({ data }) => {
-  const [seeMore, setSeeMore] = useState(false);
+  const [seeMore, setSeeMore] = useState(new Array(data.length).fill(false));
   const getStatusButton = (status) => {
     if (status === "pending") {
       return (
@@ -41,7 +41,7 @@ const OrderCard = ({ data }) => {
   return (
     <>
       {data.map((d) => (
-        <Grid item key={d.price} xs={12} sm={6} md={4} lg={4}>
+        <Grid item key={d.id} xs={12} sm={6} md={4} lg={4}>
           <Card>
             <CardMedia
               component="img"
@@ -57,7 +57,7 @@ const OrderCard = ({ data }) => {
                 Rs. {d.price}
               </Typography>
               <div style={{ margin: "20px" }}>
-                {seeMore &&
+                {seeMore[d.id] &&
                   d.details.map((item) => (
                     <Typography color="green" textAlign="left" variant="body1">
                       {item.quantity} {item.name} Rs.{item.price} each
@@ -69,10 +69,12 @@ const OrderCard = ({ data }) => {
                 fullWidth
                 size="small"
                 onClick={() => {
-                  setSeeMore(!seeMore);
+                  const temp = [...seeMore];
+                  temp[d.id] = !seeMore[d.id];
+                  setSeeMore(temp);
                 }}
               >
-                See {!seeMore ? "More" : "Less"}
+                See {!seeMore[d.id] ? "More" : "Less"}
               </Button>
             </CardContent>
             <CardActions>{getStatusButton(d.status)}</CardActions>
