@@ -7,8 +7,14 @@ import Button from "@mui/material/Button";
 import { Avatar } from "@mui/material";
 import logo from "../utils/images/logo.jpg";
 import { Link } from "react-router-dom";
+import Logout from "./logout";
+
+import { useContext } from "react";
+import { Context } from "../context/Context";
 
 export default function ButtonAppBar() {
+  const { isLoggedIn } = useContext(Context);
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static" color="success">
@@ -19,26 +25,6 @@ export default function ButtonAppBar() {
           </Typography>
           <Button
             component={Link}
-            to="/orders"
-            sx={{ m: 1 }}
-            color="inherit"
-            variant="outlined"
-            size="small"
-          >
-            Orders
-          </Button>
-          <Button
-            component={Link}
-            to="/menu"
-            sx={{ m: 1 }}
-            color="inherit"
-            variant="outlined"
-            size="small"
-          >
-            Menu
-          </Button>
-          <Button
-            component={Link}
             to="/"
             sx={{ m: 1 }}
             color="inherit"
@@ -47,26 +33,54 @@ export default function ButtonAppBar() {
           >
             Home
           </Button>
-          <Button
-            component={Link}
-            to="/register"
-            sx={{ m: 1 }}
-            color="inherit"
-            variant="outlined"
-            size="small"
-          >
-            Register
-          </Button>
-          <Button
-            component={Link}
-            to="/login"
-            sx={{ m: 1 }}
-            color="inherit"
-            variant="outlined"
-            size="small"
-          >
-            Login
-          </Button>
+          {isLoggedIn ? (
+            <>
+              <Button
+                component={Link}
+                to="/orders"
+                sx={{ m: 1 }}
+                color="inherit"
+                variant="outlined"
+                size="small"
+              >
+                Orders
+              </Button>
+              <Button
+                component={Link}
+                to="/menu"
+                sx={{ m: 1 }}
+                color="inherit"
+                variant="outlined"
+                size="small"
+              >
+                Menu
+              </Button>
+              <Logout></Logout>
+            </>
+          ) : (
+            <>
+              <Button
+                component={Link}
+                to="/register"
+                sx={{ m: 1 }}
+                color="inherit"
+                variant="outlined"
+                size="small"
+              >
+                Register
+              </Button>
+              <Button
+                component={Link}
+                to="/login"
+                sx={{ m: 1 }}
+                color="inherit"
+                variant="outlined"
+                size="small"
+              >
+                Login
+              </Button>
+            </>
+          )}
         </Toolbar>
       </AppBar>
     </Box>
