@@ -2,10 +2,13 @@ import data from "../foodData";
 import { Container, Grid, Typography, Button } from "@mui/material";
 import MenuCard from "../components/menuCard";
 import BasicTable from "../components/orderTable";
+import AppBar from "../components/appbar";
+import Footer from "../components/footer";
 
 const Menu = () => {
   return (
     <>
+      <AppBar />
       <Container>
         <Grid sx={{ mt: 1, mb: 5 }} container spacing={4}>
           <MenuCard data={data} />
@@ -25,6 +28,7 @@ const Menu = () => {
           </Grid>
         </Grid>
       </Container>
+      <Footer />
     </>
   );
 };
