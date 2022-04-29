@@ -8,12 +8,37 @@ import { Avatar } from "@mui/material";
 import logo from "../utils/images/logo.jpg";
 import { Link } from "react-router-dom";
 import Logout from "./logout";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 
-import { useContext } from "react";
+import { useState, useEffect, useContext } from "react";
 import { Context } from "../context/Context";
+import axios from "axios";
 
 export default function ButtonAppBar() {
   const { isLoggedIn } = useContext(Context);
+  const [userDetails, setUserDetails] = useState({});
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      getUserDetails();
+    }
+  }, [isLoggedIn]);
+
+  const getUserDetails = async () => {
+    try {
+      const token = localStorage.getItem("userToken");
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+          authorization: `Bearer ${token}`,
+        },
+      };
+      const userDetails = await axios.get("/users/dashboard", config);
+      setUserDetails(userDetails.data.user);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -23,6 +48,10 @@ export default function ButtonAppBar() {
           <Typography variant="h5" component="div" sx={{ flexGrow: 1 }}>
             Diagonal Foods
           </Typography>
+          {isLoggedIn && <AccountCircleIcon />}
+          {isLoggedIn && (
+            <Typography sx={{ m: 1 }}>{userDetails.name}</Typography>
+          )}
           <Button
             component={Link}
             to="/"

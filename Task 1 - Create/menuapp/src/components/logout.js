@@ -10,6 +10,7 @@ const Logout = () => {
   };
   return (
     <Button
+      size="small"
       sx={{ m: 1 }}
       variant="outlined"
       color="inherit"
