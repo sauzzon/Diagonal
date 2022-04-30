@@ -8,6 +8,9 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { Box } from "@mui/system";
 
+import { useContext } from "react";
+import { Context } from "../context/Context";
+
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
     backgroundColor: theme.palette.common.black,
@@ -35,6 +38,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 }));
 
 const BasicTable = (props) => {
+  const { quantity, setQuantity } = useContext(Context);
   return (
     <Box sx={{ margin: "50px" }}>
       <TableContainer component={Paper}>
@@ -63,7 +67,7 @@ const BasicTable = (props) => {
                   >
                     -
                   </Button>
-                  5
+                  {quantity[index]}
                   <Button
                     color="success"
                     sx={{ ml: 2 }}

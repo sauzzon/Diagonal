@@ -12,7 +12,8 @@ import { useContext } from "react";
 import { Context } from "../context/Context";
 
 const MenuCard = ({ data }) => {
-  const { selectedFood, setSelectedFood } = useContext(Context);
+  const { selectedFood, setSelectedFood, quantity, setQuantity } =
+    useContext(Context);
   return (
     <>
       {data.map((d) => (
@@ -40,8 +41,10 @@ const MenuCard = ({ data }) => {
                 variant="contained"
                 size="small"
                 onClick={() => {
-                  if (!selectedFood.includes(d))
+                  if (!selectedFood.includes(d)) {
                     setSelectedFood([...selectedFood, d]);
+                    setQuantity([...quantity, 1]);
+                  }
                 }}
               >
                 Add to Cart
