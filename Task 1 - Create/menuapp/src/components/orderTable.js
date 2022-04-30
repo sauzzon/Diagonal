@@ -38,6 +38,14 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 }));
 
 const BasicTable = (props) => {
+  const getTotalPrice = (foods) => {
+    let sum = 0;
+    foods.map((food, index) => {
+      sum = sum + food.price * quantity[index];
+    });
+    return sum;
+  };
+
   const { quantity, setQuantity } = useContext(Context);
   return (
     <Box sx={{ margin: "50px" }}>
@@ -88,20 +96,22 @@ const BasicTable = (props) => {
                   </Button>
                 </StyledTableCell>
                 <StyledTableCell align="left">
-                  {food.price * quantity[index]}
+                  Rs. {food.price * quantity[index]}
                 </StyledTableCell>
               </StyledTableRow>
             ))}
           </TableBody>
-          {/* <TableFooter>
+          <TableFooter>
             <StyledTableRow>
               <StyledTableCell align="left"></StyledTableCell>
               <StyledTableCell align="left">Total</StyledTableCell>
               <StyledTableCell align="left"></StyledTableCell>
               <StyledTableCell align="left"></StyledTableCell>
-              <StyledTableCell align="left">Rs. 2250</StyledTableCell>
+              <StyledTableCell align="left">
+                Rs. {getTotalPrice(props.data)}
+              </StyledTableCell>
             </StyledTableRow>
-          </TableFooter> */}
+          </TableFooter>
         </Table>
       </TableContainer>
     </Box>
