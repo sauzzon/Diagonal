@@ -91,7 +91,10 @@ const BasicTable = (props) => {
       };
       await axios.post("/orders", order, config);
       setLoading(false);
-      setNotification({ type: "success", msg: "Order Placed Successfully" });
+      setNotification({
+        type: "success",
+        msg: "Order Placed Successfully Goto Orders for payment ",
+      });
     } catch (error) {
       setLoading(false);
       setNotification({ type: "error", msg: error.response.data.msg });

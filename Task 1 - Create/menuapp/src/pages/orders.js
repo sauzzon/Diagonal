@@ -1,5 +1,5 @@
 import OrderCard from "../components/orderCard";
-import { Container, Grid, CircularProgress } from "@mui/material";
+import { Container, Grid, CircularProgress, Typography } from "@mui/material";
 
 import { useNavigate } from "react-router-dom";
 import { useEffect, useContext, useState } from "react";
@@ -53,11 +53,23 @@ const Orders = () => {
           sx={{ margin: "auto", position: "absolute", top: "48%", left: "48%" }}
         />
       ) : (
-        <Container>
-          <Grid sx={{ mt: 1, mb: 5 }} container spacing={4}>
-            <OrderCard getOrderDetails={getOrderDetails} data={orderDetails} />
-          </Grid>
-        </Container>
+        <>
+          <Container>
+            <Grid sx={{ mt: 1, mb: 5 }} container spacing={4}>
+              {!!orderDetails.length && (
+                <OrderCard
+                  getOrderDetails={getOrderDetails}
+                  data={orderDetails}
+                />
+              )}
+            </Grid>
+          </Container>
+          {!orderDetails.length && (
+            <Typography textAlign="center" color="green" variant="h6">
+              No any order history
+            </Typography>
+          )}
+        </>
       )}
     </>
   );
