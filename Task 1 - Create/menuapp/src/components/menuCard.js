@@ -8,7 +8,11 @@ import {
   Button,
 } from "@mui/material";
 
+import { useContext } from "react";
+import { Context } from "../context/Context";
+
 const MenuCard = ({ data }) => {
+  const { selectedFood, setSelectedFood } = useContext(Context);
   return (
     <>
       {data.map((d) => (
@@ -35,6 +39,10 @@ const MenuCard = ({ data }) => {
                 color="success"
                 variant="contained"
                 size="small"
+                onClick={() => {
+                  if (!selectedFood.includes(d))
+                    setSelectedFood([...selectedFood, d]);
+                }}
               >
                 Add to Cart
               </Button>

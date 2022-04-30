@@ -17,7 +17,7 @@ import Notification from "../components/notification";
 const Menu = () => {
   const [loading, setLoading] = useState(false);
   const [notification, setNotification] = useState({ type: "", msg: "" });
-  const { isLoggedIn } = useContext(Context);
+  const { isLoggedIn, selectedFood } = useContext(Context);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -45,16 +45,21 @@ const Menu = () => {
           </Grid>
           <Grid sx={{ m: 1, background: "#f4fdf4" }} container>
             <Grid item xs={12} sm={12} md={12} lg={12}>
-              {data ? (
-                <BasicTable data={data}></BasicTable>
-              ) : (
-                <Typography variant="h6">No items selected</Typography>
+              {!!selectedFood.length && (
+                <>
+                  <BasicTable data={selectedFood}></BasicTable>
+                  <center>
+                    <Button sx={{ mb: 5 }} color="success" variant="contained">
+                      Confirm Order
+                    </Button>
+                  </center>
+                </>
               )}
-              <center>
-                <Button sx={{ mb: 5 }} color="success" variant="contained">
-                  Confirm Order
-                </Button>
-              </center>
+              {!selectedFood.length && (
+                <Typography textAlign="center" variant="h6">
+                  No items selected
+                </Typography>
+              )}
             </Grid>
           </Grid>
         </Container>
