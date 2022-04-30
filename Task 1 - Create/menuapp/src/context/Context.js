@@ -9,6 +9,12 @@ export const ContextProvider = ({ children }) => {
   useEffect(() => {
     const token = localStorage.getItem("userToken");
     if (token) setIsLoggedIn(true);
+
+    const selFood = localStorage.getItem("selectedFood");
+    if (selFood) setSelectedFood(JSON.parse(selFood));
+
+    const qty = localStorage.getItem("quantity");
+    if (qty) setQuantity(JSON.parse(qty));
   }, []);
 
   return (

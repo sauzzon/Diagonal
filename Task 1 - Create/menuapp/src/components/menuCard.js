@@ -44,6 +44,14 @@ const MenuCard = ({ data }) => {
                   if (!selectedFood.includes(d)) {
                     setSelectedFood([...selectedFood, d]);
                     setQuantity([...quantity, 1]);
+                    localStorage.setItem(
+                      "selectedFood",
+                      JSON.stringify([...selectedFood, d])
+                    );
+                    localStorage.setItem(
+                      "quantity",
+                      JSON.stringify([...quantity, 1])
+                    );
                   }
                   window.scrollTo({
                     left: 0,

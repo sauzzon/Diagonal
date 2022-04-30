@@ -79,6 +79,8 @@ const BasicTable = (props) => {
 
     setQuantity([]);
     setSelectedFood([]);
+    localStorage.setItem("selectedFood", JSON.stringify([]));
+    localStorage.setItem("quantity", JSON.stringify([]));
     setLoading(true);
 
     try {
@@ -152,6 +154,10 @@ const BasicTable = (props) => {
                                 const temp = [...quantity];
                                 if (temp[index] > 1) temp[index]--;
                                 setQuantity(temp);
+                                localStorage.setItem(
+                                  "quantity",
+                                  JSON.stringify(temp)
+                                );
                               }}
                             >
                               -
@@ -166,6 +172,10 @@ const BasicTable = (props) => {
                                 const temp = [...quantity];
                                 temp[index]++;
                                 setQuantity(temp);
+                                localStorage.setItem(
+                                  "quantity",
+                                  JSON.stringify(temp)
+                                );
                               }}
                             >
                               +
