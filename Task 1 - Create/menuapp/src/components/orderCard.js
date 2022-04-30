@@ -40,8 +40,8 @@ const OrderCard = ({ data }) => {
   };
   return (
     <>
-      {data.map((d) => (
-        <Grid item key={d.id} xs={12} sm={6} md={4} lg={4}>
+      {data.map((d, index) => (
+        <Grid item key={d._id} xs={12} sm={6} md={4} lg={4}>
           <Card>
             <CardMedia
               component="img"
@@ -51,15 +51,20 @@ const OrderCard = ({ data }) => {
             />
             <CardContent>
               <Typography textAlign="center" variant="h6">
-                Order Date: {d.createdAt}
+                Order Date: {d.createdAt.slice(0, 10)}
               </Typography>
               <Typography color="red" textAlign="center" variant="h6">
                 Rs. {d.price}
               </Typography>
               <div style={{ margin: "20px" }}>
-                {seeMore[d.id] &&
-                  d.details.map((item) => (
-                    <Typography color="green" textAlign="left" variant="body1">
+                {seeMore[index] &&
+                  JSON.parse(d.details).map((item, i) => (
+                    <Typography
+                      key={i}
+                      color="green"
+                      textAlign="left"
+                      variant="body1"
+                    >
                       {item.quantity} {item.name} Rs.{item.price} each
                     </Typography>
                   ))}
@@ -70,11 +75,11 @@ const OrderCard = ({ data }) => {
                 size="small"
                 onClick={() => {
                   const temp = [...seeMore];
-                  temp[d.id] = !seeMore[d.id];
+                  temp[index] = !seeMore[index];
                   setSeeMore(temp);
                 }}
               >
-                See {!seeMore[d.id] ? "More" : "Less"}
+                See {!seeMore[index] ? "More" : "Less"}
               </Button>
             </CardContent>
             <CardActions>{getStatusButton(d.status)}</CardActions>
