@@ -11,6 +11,10 @@ const OrderSchema = new mongoose.Schema(
       enum: ["payed", "pending"],
       default: "pending",
     },
+    price: {
+      type: Number,
+      required: [true, "Please provide order price"],
+    },
     createdBy: {
       type: mongoose.Types.ObjectId,
       ref: "User",
