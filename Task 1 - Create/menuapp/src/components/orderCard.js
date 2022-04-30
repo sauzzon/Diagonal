@@ -12,8 +12,11 @@ import photo from "../utils/images/order.jpg";
 
 const OrderCard = ({ data }) => {
   const [seeMore, setSeeMore] = useState(new Array(data.length).fill(false));
-  const getStatusButton = (status) => {
-    if (status === "pending") {
+
+  const payOrder = (d) => {};
+
+  const getStatusButton = (d) => {
+    if (d.status === "pending") {
       return (
         <Button
           sx={{ mb: 1, mt: 0 }}
@@ -21,6 +24,9 @@ const OrderCard = ({ data }) => {
           color="error"
           variant="contained"
           size="small"
+          onClick={() => {
+            payOrder(d);
+          }}
         >
           Pay Now
         </Button>
@@ -82,7 +88,7 @@ const OrderCard = ({ data }) => {
                 See {!seeMore[index] ? "More" : "Less"}
               </Button>
             </CardContent>
-            <CardActions>{getStatusButton(d.status)}</CardActions>
+            <CardActions>{getStatusButton(d)}</CardActions>
           </Card>
         </Grid>
       ))}

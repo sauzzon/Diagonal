@@ -4,11 +4,11 @@ const router = express.Router();
 const {
   createOrder,
   getAllOrders,
-  getOrder,
+  payOrder,
 } = require("../controllers/orders");
 
 router.route("/").post(createOrder).get(getAllOrders);
 
-router.route("/:id").get(getOrder);
+router.route("/:id").patch(payOrder);
 
 module.exports = router;

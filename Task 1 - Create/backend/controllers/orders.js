@@ -8,16 +8,22 @@ const getAllOrders = async (req, res) => {
   );
   res.status(StatusCodes.OK).json({ orders, count: orders.length });
 };
-const getOrder = async (req, res) => {
+const payOrder = async (req, res) => {
   const {
     user: { userId },
     params: { id: orderId },
   } = req;
 
-  const order = await Order.findOne({
-    _id: orderId,
-    createdBy: userId,
-  });
+  const order = await Order.findOneAndUpdate(
+    {
+      _id: orderId,
+      createdBy: userId,
+    },
+    {
+      status: "paid",
+    },
+    { new: true, runValidators: true }
+  );
   if (!order) {
     throw new NotFoundError(`No order with id ${orderId}`);
   }
@@ -33,5 +39,5 @@ const createOrder = async (req, res) => {
 module.exports = {
   createOrder,
   getAllOrders,
-  getOrder,
+  payOrder,
 };
