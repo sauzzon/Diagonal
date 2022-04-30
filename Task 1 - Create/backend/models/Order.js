@@ -8,7 +8,7 @@ const OrderSchema = new mongoose.Schema(
     },
     status: {
       type: String,
-      enum: ["payed", "pending"],
+      enum: ["paid", "pending"],
       default: "pending",
     },
     price: {
