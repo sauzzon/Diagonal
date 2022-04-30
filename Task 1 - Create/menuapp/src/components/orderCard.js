@@ -13,7 +13,7 @@ import photo from "../utils/images/order.jpg";
 import axios from "axios";
 import Notification from "./notification";
 
-const OrderCard = ({ data }) => {
+const OrderCard = ({ data, getOrderDetails }) => {
   const [loading, setLoading] = useState(false);
   const [notification, setNotification] = useState({ type: "", msg: "" });
   const [seeMore, setSeeMore] = useState(new Array(data.length).fill(false));
@@ -29,6 +29,7 @@ const OrderCard = ({ data }) => {
       };
       await axios.patch(`/orders/${d._id}`, {}, config);
       setLoading(false);
+      getOrderDetails();
       setNotification({ type: "success", msg: "Payment done successfully" });
     } catch (error) {
       setLoading(false);

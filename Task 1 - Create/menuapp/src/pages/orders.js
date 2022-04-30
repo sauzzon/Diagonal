@@ -55,7 +55,7 @@ const Orders = () => {
       ) : (
         <Container>
           <Grid sx={{ mt: 1, mb: 5 }} container spacing={4}>
-            <OrderCard data={orderDetails} />
+            <OrderCard getOrderDetails={getOrderDetails} data={orderDetails} />
           </Grid>
         </Container>
       )}
