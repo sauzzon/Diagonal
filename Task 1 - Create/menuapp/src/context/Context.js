@@ -9,7 +9,7 @@ export const ContextProvider = ({ children }) => {
   useEffect(() => {
     const token = localStorage.getItem("userToken");
     if (token) setIsLoggedIn(true);
-  });
+  }, []);
 
   return (
     <Context.Provider
