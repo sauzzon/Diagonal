@@ -1,4 +1,10 @@
-import { Button, styled, TableFooter, CircularProgress } from "@mui/material";
+import {
+  Button,
+  styled,
+  TableFooter,
+  CircularProgress,
+  Typography,
+} from "@mui/material";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell, { tableCellClasses } from "@mui/material/TableCell";
@@ -107,91 +113,100 @@ const BasicTable = (props) => {
         />
       ) : (
         <>
-          <Box sx={{ margin: "50px" }}>
-            <TableContainer component={Paper}>
-              <Table>
-                <TableHead>
-                  <StyledTableRow>
-                    <StyledTableCell align="left">S.N</StyledTableCell>
-                    <StyledTableCell align="left">Item</StyledTableCell>
-                    <StyledTableCell align="left">Price</StyledTableCell>
-                    <StyledTableCell align="left">Quantity</StyledTableCell>
-                    <StyledTableCell align="left">Total</StyledTableCell>
-                  </StyledTableRow>
-                </TableHead>
-                <TableBody>
-                  {props.data.map((food, index) => (
-                    <StyledTableRow key={food.name}>
-                      <StyledTableCell align="left">
-                        {index + 1}
-                      </StyledTableCell>
-                      <StyledTableCell align="left">
-                        {food.name}
-                      </StyledTableCell>
-                      <StyledTableCell align="left">
-                        {food.price}
-                      </StyledTableCell>
-                      <StyledTableCell align="left">
-                        <Button
-                          sx={{ mr: 2 }}
-                          color="success"
-                          size="small"
-                          variant="contained"
-                          onClick={() => {
-                            const temp = [...quantity];
-                            if (temp[index] > 1) temp[index]--;
-                            setQuantity(temp);
-                          }}
-                        >
-                          -
-                        </Button>
-                        {quantity[index]}
-                        <Button
-                          color="success"
-                          sx={{ ml: 2 }}
-                          size="small"
-                          variant="contained"
-                          onClick={() => {
-                            const temp = [...quantity];
-                            temp[index]++;
-                            setQuantity(temp);
-                          }}
-                        >
-                          +
-                        </Button>
-                      </StyledTableCell>
-                      <StyledTableCell align="left">
-                        Rs. {food.price * quantity[index]}
-                      </StyledTableCell>
-                    </StyledTableRow>
-                  ))}
-                </TableBody>
-                <TableFooter>
-                  <StyledTableRow>
-                    <StyledTableCell align="left"></StyledTableCell>
-                    <StyledTableCell align="left">Total</StyledTableCell>
-                    <StyledTableCell align="left"></StyledTableCell>
-                    <StyledTableCell align="left"></StyledTableCell>
-                    <StyledTableCell align="left">
-                      Rs. {getTotalPrice(props.data)}
-                    </StyledTableCell>
-                  </StyledTableRow>
-                </TableFooter>
-              </Table>
-            </TableContainer>
-          </Box>
-          <center>
-            <Button
-              onClick={() => {
-                handleSubmit(props.data);
-              }}
-              sx={{ mb: 5 }}
-              color="success"
-              variant="contained"
-            >
-              Confirm Order
-            </Button>
-          </center>
+          {!!props.data.length && (
+            <>
+              <Box sx={{ margin: "50px" }}>
+                <TableContainer component={Paper}>
+                  <Table>
+                    <TableHead>
+                      <StyledTableRow>
+                        <StyledTableCell align="left">S.N</StyledTableCell>
+                        <StyledTableCell align="left">Item</StyledTableCell>
+                        <StyledTableCell align="left">Price</StyledTableCell>
+                        <StyledTableCell align="left">Quantity</StyledTableCell>
+                        <StyledTableCell align="left">Total</StyledTableCell>
+                      </StyledTableRow>
+                    </TableHead>
+                    <TableBody>
+                      {props.data.map((food, index) => (
+                        <StyledTableRow key={food.name}>
+                          <StyledTableCell align="left">
+                            {index + 1}
+                          </StyledTableCell>
+                          <StyledTableCell align="left">
+                            {food.name}
+                          </StyledTableCell>
+                          <StyledTableCell align="left">
+                            {food.price}
+                          </StyledTableCell>
+                          <StyledTableCell align="left">
+                            <Button
+                              sx={{ mr: 2 }}
+                              color="success"
+                              size="small"
+                              variant="contained"
+                              onClick={() => {
+                                const temp = [...quantity];
+                                if (temp[index] > 1) temp[index]--;
+                                setQuantity(temp);
+                              }}
+                            >
+                              -
+                            </Button>
+                            {quantity[index]}
+                            <Button
+                              color="success"
+                              sx={{ ml: 2 }}
+                              size="small"
+                              variant="contained"
+                              onClick={() => {
+                                const temp = [...quantity];
+                                temp[index]++;
+                                setQuantity(temp);
+                              }}
+                            >
+                              +
+                            </Button>
+                          </StyledTableCell>
+                          <StyledTableCell align="left">
+                            Rs. {food.price * quantity[index]}
+                          </StyledTableCell>
+                        </StyledTableRow>
+                      ))}
+                    </TableBody>
+                    <TableFooter>
+                      <StyledTableRow>
+                        <StyledTableCell align="left"></StyledTableCell>
+                        <StyledTableCell align="left">Total</StyledTableCell>
+                        <StyledTableCell align="left"></StyledTableCell>
+                        <StyledTableCell align="left"></StyledTableCell>
+                        <StyledTableCell align="left">
+                          Rs. {getTotalPrice(props.data)}
+                        </StyledTableCell>
+                      </StyledTableRow>
+                    </TableFooter>
+                  </Table>
+                </TableContainer>
+              </Box>
+              <center>
+                <Button
+                  onClick={() => {
+                    handleSubmit(props.data);
+                  }}
+                  sx={{ mb: 5 }}
+                  color="success"
+                  variant="contained"
+                >
+                  Confirm Order
+                </Button>
+              </center>
+            </>
+          )}
+          {!props.data.length && (
+            <Typography variant="h6" textAlign="center">
+              No items selected
+            </Typography>
+          )}
         </>
       )}
     </>
