@@ -64,6 +64,11 @@ const BasicTable = (props) => {
                     color="success"
                     size="small"
                     variant="contained"
+                    onClick={() => {
+                      const temp = [...quantity];
+                      if (temp[index] > 1) temp[index]--;
+                      setQuantity(temp);
+                    }}
                   >
                     -
                   </Button>
@@ -73,15 +78,22 @@ const BasicTable = (props) => {
                     sx={{ ml: 2 }}
                     size="small"
                     variant="contained"
+                    onClick={() => {
+                      const temp = [...quantity];
+                      temp[index]++;
+                      setQuantity(temp);
+                    }}
                   >
                     +
                   </Button>
                 </StyledTableCell>
-                <StyledTableCell align="left">{food.price}</StyledTableCell>
+                <StyledTableCell align="left">
+                  {food.price * quantity[index]}
+                </StyledTableCell>
               </StyledTableRow>
             ))}
           </TableBody>
-          <TableFooter>
+          {/* <TableFooter>
             <StyledTableRow>
               <StyledTableCell align="left"></StyledTableCell>
               <StyledTableCell align="left">Total</StyledTableCell>
@@ -89,7 +101,7 @@ const BasicTable = (props) => {
               <StyledTableCell align="left"></StyledTableCell>
               <StyledTableCell align="left">Rs. 2250</StyledTableCell>
             </StyledTableRow>
-          </TableFooter>
+          </TableFooter> */}
         </Table>
       </TableContainer>
     </Box>
