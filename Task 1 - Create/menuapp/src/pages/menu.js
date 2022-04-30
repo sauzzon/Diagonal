@@ -13,6 +13,11 @@ const Menu = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    window.scrollTo({
+      left: 0,
+      top: 0,
+      behavior: "smooth",
+    });
     if (!isLoggedIn) {
       return navigate("/login");
     }

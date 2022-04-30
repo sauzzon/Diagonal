@@ -45,6 +45,11 @@ const MenuCard = ({ data }) => {
                     setSelectedFood([...selectedFood, d]);
                     setQuantity([...quantity, 1]);
                   }
+                  window.scrollTo({
+                    left: 0,
+                    top: document.body.scrollHeight,
+                    behavior: "smooth",
+                  });
                 }}
               >
                 Add to Cart
