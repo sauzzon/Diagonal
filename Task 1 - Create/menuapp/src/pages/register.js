@@ -14,6 +14,7 @@ import { Context } from "../context/Context";
 import { useNavigate } from "react-router-dom";
 import Notification from "../components/notification";
 import axios from "axios";
+import Footer from "../components/footer";
 
 const Register = () => {
   const [loading, setLoading] = useState(false);
@@ -217,6 +218,7 @@ const Register = () => {
               </Paper>
             </Grid>
           </Grid>
+          <Footer />
         </>
       )}
     </>

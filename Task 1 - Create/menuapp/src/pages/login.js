@@ -14,6 +14,7 @@ import { Context } from "../context/Context";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Notification from "../components/notification";
+import Footer from "../components/footer";
 
 const Login = () => {
   //some styling
@@ -152,6 +153,7 @@ const Login = () => {
               </Paper>
             </Grid>
           </Grid>
+          <Footer />
         </>
       )}
     </>
